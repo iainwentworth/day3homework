@@ -1,3 +1,10 @@
+# users => hash
+# user => hash
+# lottery_numbers => hash
+# pets => array of hashes
+# pet => hash
+#
+
 users = {
   "Jonathan" => {
     :twitter => "jonnyt",
@@ -72,16 +79,18 @@ users["Avril"][:pets][0][:species]
 
 # 5. Get the smallest of Erik's lottery numbers
 
-Erik = users["Erik"][:lottery_numbers].sort
-Erik[0]
+# Erik = users["Erik"][:lottery_numbers].sort
+# Erik[0]
+
+ users["Erik"][:lottery_numbers].min()
 
 # 6. Return an array of Avril's lottery numbers that are even
 
-for item in users["Avril"][:lottery_numbers]
-  if item % 2 == 0
-    #p item
-  end
+even_numbers = []
+for number in users["Avril"][:lottery_numbers]
+  even_numbers.push(number) if number.even?()
 end
+# p even_numbers
 
 # 7. Erik is one lottery number short! Add the number `7` to be included in his lottery numbers
 
@@ -91,24 +100,29 @@ users["Erik"][:lottery_numbers] << 7
 # 8. Change Erik's hometown to Edinburgh
 
 users["Erik"][:home_town] = "Edinburgh"
-users["Erik"][:home_town]
 
 # 9. Add a pet dog to Erik called "Fluffy"
 
 users["Erik"][:pets] << {name: "Fluffy", species: "dog"}
-users["Erik"][:pets]
 
 # 10. Add another person to the users hash
 
-users.store("David", {
-  :twitter => "Dave",
-  :lottery_numbers => [1, 2, 3, 4, 5, 6],
-  :home_town => "Davestown",
-  :pets => [
-  {
-    :name => "fluffy",
-    :species => "dragon"
-  }
-]
-})
+users["Harry"] = {
+  twitter: "harryh",
+  lottery_numbers: [ 1,2,3,4,5,6],
+  home_town: "Glasgow",
+  pets: []
+}
+
+# users.store("David", {
+#   :twitter => "Dave",
+#   :lottery_numbers => [1, 2, 3, 4, 5, 6],
+#   :home_town => "Davestown",
+#   :pets => [
+#   {
+#     :name => "fluffy",
+#     :species => "dragon"
+#   }
+# ]
+# })
 #p users
